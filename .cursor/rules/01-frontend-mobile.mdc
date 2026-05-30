@@ -1,0 +1,48 @@
+---
+description: Mobile frontend with Expo, React Native, and offline-first approach
+globs: "apps/mobile/**/*"
+alwaysApply: false
+---
+
+# Mobile frontend (Expo + React Native)
+
+> Extended reference: `docs/ARCHITECTURE.md` §3
+
+## Stack
+
+| Area | Technology |
+|------|------------|
+| UI | NativeWind (Tailwind) + Reanimated or Moti |
+| Global state | Zustand |
+| Local data | Expo SQLite |
+| Sync | TanStack Query + Supabase |
+
+## Per-feature structure
+
+Each module lives under `apps/mobile/src/features/<name>/`:
+
+```text
+features/<name>/
+├── components/    # Pure UI (props only)
+├── containers/    # Orchestration: store ↔ view
+└── store/         # Module-local state (Zustand)
+```
+
+Shared components: `apps/mobile/src/presentation/` (`ui/`, `navigation/`).
+
+Global config: `apps/mobile/src/core/` (`theme/`, `database/`).
+
+## Code rules
+
+1. **`components/`** must not import services, SQLite, or Supabase.
+2. **`containers/`** connect store and persistence to the view.
+3. **Offline-first**: every write hits SQLite first; it must work offline before syncing.
+4. **Adapters** live in the feature or in `core/` when DB/API → domain mapping is non-trivial.
+
+## Feature names
+
+| Code module | Product |
+|-------------|---------|
+| `lovebox` | Time capsules |
+| `emotional-status` | MoodSync |
+| `wishlist` | Our Bucket |

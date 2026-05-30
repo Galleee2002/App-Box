@@ -1,0 +1,33 @@
+---
+description: Global architecture, philosophy, and patterns for the Lovebox project
+globs: "**/*"
+alwaysApply: true
+---
+
+# Lovebox — Global architecture
+
+> Extended reference: `docs/ARCHITECTURE.md`
+
+## Principles
+
+| Principle | What it means |
+|-----------|---------------|
+| **Keep It Simple** | No over-engineering. Robust, straightforward solutions. |
+| **Maintainability** | Code for a 2-person team, not blind scale-at-all-costs. |
+| **Screaming Architecture** | Organize by features (`lovebox`, `emotional-status`, `wishlist`), not by technical layer. |
+| **Separation of concerns** | Domain and UI stay separate from frameworks and data sources. |
+| **Untouchable domain** | Business rules are agnostic to SQLite, Supabase, or APIs. |
+
+## Allowed patterns
+
+| Pattern | Use |
+|---------|-----|
+| **Container** | Orchestrates state and data; UI only receives props. |
+| **Repository** | Decouples data source (local SQLite / remote Supabase). |
+| **Adapter / Mapper** | Maps DB or API responses into clean domain entities. |
+
+## Avoid
+
+- Business logic in visual components.
+- Coupling the domain to the database schema or network DTOs.
+- Generic abstractions without a concrete use case in the app.

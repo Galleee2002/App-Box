@@ -1,0 +1,34 @@
+---
+description: API, Supabase, and sync for the client's offline-first support
+globs: "apps/api/**/*,supabase/**/*"
+alwaysApply: false
+---
+
+# Backend and synchronization
+
+## Stack
+
+| Area | Technology |
+|------|------------|
+| Database | PostgreSQL (Supabase) |
+| Auth | JWT — secure session for both partners |
+
+## Data flow
+
+1. The client writes to **SQLite** first.
+2. When connectivity returns, it syncs with Supabase.
+3. APIs must support **conflict resolution** (timestamps, versioning, or an explicit domain strategy).
+
+## Layers and responsibilities
+
+| Layer | Responsibility |
+|-------|----------------|
+| **Entity / domain** | Business rules; no ORM or HTTP dependencies. |
+| **DTO** | API input/output contract; separate from DB entities. |
+| **Persistence** | Postgres access; map to domain via adapters. |
+
+## Code rules
+
+- Do not expose raw columns or tables as the public API contract.
+- Supabase RLS policies aligned with the couple model (two users, one shared space).
+- Idempotent endpoints where the client retries after offline.
