@@ -50,7 +50,7 @@ Chosen to leverage web design skills, ensure **offline-first** support, and avoi
 | **Mobile frontend** | React Native + Expo | Mobile-first; JavaScript/TypeScript ecosystem |
 | **Styling & animation** | NativeWind (Tailwind) + Reanimated or Moti | Warm UI, smooth transitions, micro-interactions |
 | **Local data** | Expo SQLite + Zustand | On-device storage (offline-first) |
-| **Backend & sync** | Supabase | Cloud DB, secure couple auth, sync without a custom server |
+| **Backend & sync** | Neon (Postgres) + `apps/api` | Cloud DB; mobile syncs via REST; SQLite stays offline-first |
 
 ---
 

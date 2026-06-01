@@ -4,7 +4,7 @@
 
 **Created**: 2026-05-27
 
-**Status**: Draft
+**Status**: Done
 
 **Input**: User description: "iOS-first mobile app foundation using Spec Kit, Expo, architecture alignment, and quality gates without business features in week 1."
 

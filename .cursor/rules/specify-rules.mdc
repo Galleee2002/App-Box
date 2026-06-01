@@ -3,6 +3,14 @@ alwaysApply: true
 ---
 
 <!-- SPECKIT START -->
-For additional context about technologies to be used, project structure,
-shell commands, and other important information, read the current plan
+For additional context about technologies, project structure, shell commands,
+and quality gates, read:
+
+- **Current plan**: `specs/002-lovebox-mvp/plan.md`
+- **Tasks**: `specs/002-lovebox-mvp/tasks.md` (after `/speckit-tasks`)
+- **Quickstart**: `specs/002-lovebox-mvp/quickstart.md`
+- **Spec**: `specs/002-lovebox-mvp/spec.md`
+- **Previous feature**: `specs/001-mobile-foundation/` (foundation complete)
+
+Product intent: `docs/SPEC.md` | Architecture: `docs/ARCHITECTURE.md`
 <!-- SPECKIT END -->

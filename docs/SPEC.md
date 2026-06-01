@@ -9,7 +9,7 @@ A private, couples-only mobile app that unifies closeness, planning, and emotion
 ## 2. Design and development pillars
 
 - **Closed scope:** No features outside the three described here, to avoid over-engineering.
-- **Privacy by design:** Data belongs to the couple. Primary storage is local (SQLite), synced securely via Supabase.
+- **Privacy by design:** Data belongs to the couple. Primary storage is local (SQLite), synced securely via Neon (`apps/api`).
 - **Zero friction:** Clean interfaces, smooth transitions, and optimistic UI (changes appear on screen immediately while syncing in the background).
 
 ---
@@ -59,4 +59,4 @@ A private, couples-only mobile app that unifies closeness, planning, and emotion
 
 1. **Do not invent UI:** Every new screen or component must strictly use components defined in the architecture (Container + pure components with NativeWind).
 2. **Data validation:** No record (message, Bucket item, state) may be saved with required fields empty or null.
-3. **Error handling:** Any Supabase sync network failure must be handled silently for the user; the local experience must not break.
+3. **Error handling:** Any Neon/API sync network failure must be handled silently for the user; the local experience must not break.

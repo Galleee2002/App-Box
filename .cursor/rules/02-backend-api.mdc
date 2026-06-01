@@ -1,5 +1,5 @@
 ---
-description: API, Supabase, and sync for the client's offline-first support
+description: API, Neon Postgres, and sync for the client's offline-first support
 globs: "apps/api/**/*,supabase/**/*"
 alwaysApply: false
 ---
@@ -10,13 +10,13 @@ alwaysApply: false
 
 | Area | Technology |
 |------|------------|
-| Database | PostgreSQL (Supabase) |
+| Database | PostgreSQL (Neon) |
 | Auth | JWT — secure session for both partners |
 
 ## Data flow
 
 1. The client writes to **SQLite** first.
-2. When connectivity returns, it syncs with Supabase.
+2. When connectivity returns, it syncs with Neon via `apps/api`.
 3. APIs must support **conflict resolution** (timestamps, versioning, or an explicit domain strategy).
 
 ## Layers and responsibilities
@@ -30,5 +30,5 @@ alwaysApply: false
 ## Code rules
 
 - Do not expose raw columns or tables as the public API contract.
-- Supabase RLS policies aligned with the couple model (two users, one shared space).
+- API auth (`SYNC_API_SECRET`) and `COUPLE_ID` until full couple pairing exists.
 - Idempotent endpoints where the client retries after offline.

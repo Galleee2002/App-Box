@@ -15,7 +15,7 @@ alwaysApply: false
 | UI | NativeWind (Tailwind) + Reanimated or Moti |
 | Global state | Zustand |
 | Local data | Expo SQLite |
-| Sync | TanStack Query + Supabase |
+| Sync | REST → `apps/api` → Neon (TanStack Query optional) |
 
 ## Per-feature structure
 
@@ -34,7 +34,7 @@ Global config: `apps/mobile/src/core/` (`theme/`, `database/`).
 
 ## Code rules
 
-1. **`components/`** must not import services, SQLite, or Supabase.
+1. **`components/`** must not import services, SQLite, or the sync API client.
 2. **`containers/`** connect store and persistence to the view.
 3. **Offline-first**: every write hits SQLite first; it must work offline before syncing.
 4. **Adapters** live in the feature or in `core/` when DB/API → domain mapping is non-trivial.

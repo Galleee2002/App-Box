@@ -31,4 +31,6 @@
 
 ## Notes
 
-- The specification is ready to continue with `/speckit-plan`.
+- Specification validated 2026-05-27.
+- Plan, tasks, and implementation completed 2026-06-01.
+- Foundation closed — proceed with `/speckit-specify` for `002-lovebox-mvp` per [NEXT.md](../NEXT.md).

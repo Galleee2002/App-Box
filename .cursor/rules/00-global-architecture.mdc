@@ -16,14 +16,14 @@ alwaysApply: true
 | **Maintainability** | Code for a 2-person team, not blind scale-at-all-costs. |
 | **Screaming Architecture** | Organize by features (`lovebox`, `emotional-status`, `wishlist`), not by technical layer. |
 | **Separation of concerns** | Domain and UI stay separate from frameworks and data sources. |
-| **Untouchable domain** | Business rules are agnostic to SQLite, Supabase, or APIs. |
+| **Untouchable domain** | Business rules are agnostic to SQLite, Neon, or APIs. |
 
 ## Allowed patterns
 
 | Pattern | Use |
 |---------|-----|
 | **Container** | Orchestrates state and data; UI only receives props. |
-| **Repository** | Decouples data source (local SQLite / remote Supabase). |
+| **Repository** | Decouples data source (local SQLite / remote Neon via API). |
 | **Adapter / Mapper** | Maps DB or API responses into clean domain entities. |
 
 ## Avoid
