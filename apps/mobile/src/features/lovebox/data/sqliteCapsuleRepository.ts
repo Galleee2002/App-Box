@@ -1,12 +1,9 @@
 import { getDatabase } from "@/src/core/database";
+import { generateId } from "@/src/core/generateId";
 import { sortCapsules, validateCreateCapsuleInput } from "../domain/capsule";
 import type { Capsule } from "../domain/capsule";
 import type { CapsuleRepository, CreateCapsuleInput } from "../domain/capsuleRepository";
 import { createInputToRow, rowToCapsule, type CapsuleRow } from "./capsuleMapper";
-
-function generateId(): string {
-  return globalThis.crypto.randomUUID();
-}
 
 export function createSqliteCapsuleRepository(): CapsuleRepository {
   return {
@@ -65,6 +62,22 @@ export function createSqliteCapsuleRepository(): CapsuleRepository {
       }
 
       return capsule;
+    },
+
+    async delete(id: string): Promise<void> {
+      const db = getDatabase();
+      try {
+        const result = await db.runAsync("DELETE FROM capsules WHERE id = ?", [id]);
+        if ((result.changes ?? 0) === 0) {
+          throw new Error("No encontramos esta cápsula.");
+        }
+      } catch (error) {
+        if (error instanceof Error && error.message === "No encontramos esta cápsula.") {
+          throw error;
+        }
+        const message = error instanceof Error ? error.message : "No se pudo eliminar la cápsula.";
+        throw new Error(message);
+      }
     },
   };
 }

@@ -1,4 +1,6 @@
 import { Pressable, Text, View } from "react-native";
+import { CapsuleUnlockHintView } from "./CapsuleUnlockHintView";
+import { useUnlockCountdown } from "./useUnlockCountdown";
 
 type CapsuleListItemProps = {
   title: string;
@@ -7,17 +9,12 @@ type CapsuleListItemProps = {
   onPress: () => void;
 };
 
-function formatUnlockAt(date: Date): string {
-  return date.toLocaleString(undefined, {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
-}
-
 export function CapsuleListItem({ title, isLocked, unlockAt, onPress }: CapsuleListItemProps) {
-  const badgeLabel = isLocked ? "Bloqueada" : "Desbloqueada";
-  const badgeA11y = isLocked
-    ? `Cápsula bloqueada. Se desbloquea el ${formatUnlockAt(unlockAt)}`
+  const { isLocked: isLockedNow, countdownLabel, countdownA11y, formattedDate } = useUnlockCountdown(unlockAt);
+  const showingLocked = isLocked && isLockedNow;
+  const badgeLabel = showingLocked ? "Bloqueada" : "Desbloqueada";
+  const badgeA11y = showingLocked
+    ? `Cápsula bloqueada. Cuenta atrás: ${countdownA11y}. Se desbloquea el ${formattedDate}.`
     : "Cápsula desbloqueada";
 
   return (
@@ -31,21 +28,30 @@ export function CapsuleListItem({ title, isLocked, unlockAt, onPress }: CapsuleL
         <Text className="text-base font-semibold text-text-primary dark:text-text-primary-dark" numberOfLines={1}>
           {title}
         </Text>
-        <Text className="mt-1 text-sm text-text-tertiary dark:text-text-tertiary-dark">
-          {isLocked ? `Desbloqueo: ${formatUnlockAt(unlockAt)}` : "Lista para leer"}
-        </Text>
+        <View className="mt-1">
+          {showingLocked ? (
+            <CapsuleUnlockHintView
+              countdownLabel={countdownLabel}
+              countdownA11y={countdownA11y}
+              formattedDate={formattedDate}
+              variant="compact"
+            />
+          ) : (
+            <Text className="text-sm text-text-tertiary dark:text-text-tertiary-dark">Lista para leer</Text>
+          )}
+        </View>
       </View>
       <View
         accessibilityLabel={badgeLabel}
         className={`rounded-pill px-3 py-1 ${
-          isLocked
+          showingLocked
             ? "bg-accent-ghost dark:bg-accent-ghost-dark"
             : "bg-surface-muted dark:bg-surface-muted-dark"
         }`}
       >
         <Text
           className={`text-xs font-semibold ${
-            isLocked ? "text-accent dark:text-accent-dark" : "text-success dark:text-success-dark"
+            showingLocked ? "text-accent dark:text-accent-dark" : "text-success dark:text-success-dark"
           }`}
         >
           {badgeLabel}

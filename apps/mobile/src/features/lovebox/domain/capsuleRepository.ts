@@ -10,4 +10,5 @@ export interface CapsuleRepository {
   list(): Promise<Capsule[]>;
   getById(id: string): Promise<Capsule | null>;
   create(input: CreateCapsuleInput): Promise<Capsule>;
+  delete(id: string): Promise<void>;
 }

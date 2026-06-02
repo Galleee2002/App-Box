@@ -6,11 +6,11 @@ alwaysApply: true
 For additional context about technologies, project structure, shell commands,
 and quality gates, read:
 
-- **Current plan**: `specs/002-lovebox-mvp/plan.md`
-- **Tasks**: `specs/002-lovebox-mvp/tasks.md` (after `/speckit-tasks`)
-- **Quickstart**: `specs/002-lovebox-mvp/quickstart.md`
-- **Spec**: `specs/002-lovebox-mvp/spec.md`
-- **Previous feature**: `specs/001-mobile-foundation/` (foundation complete)
+- **Current plan**: `specs/003-our-bucket-mvp/plan.md`
+- **Tasks**: `specs/003-our-bucket-mvp/tasks.md` (after `/speckit-tasks`)
+- **Quickstart**: `specs/003-our-bucket-mvp/quickstart.md`
+- **Spec**: `specs/003-our-bucket-mvp/spec.md`
+- **Previous feature**: `specs/002-lovebox-mvp/` (Lovebox MVP complete)
 
 Product intent: `docs/SPEC.md` | Architecture: `docs/ARCHITECTURE.md`
 <!-- SPECKIT END -->

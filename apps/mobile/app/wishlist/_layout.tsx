@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 import { getThemeTokens } from "@/src/core/theme";
 import { useThemeStore } from "@/src/core/theme/store";
 
-export default function LoveboxLayout() {
+export default function WishlistLayout() {
   const mode = useThemeStore((state) => state.mode);
   const theme = getThemeTokens(mode);
 
@@ -15,8 +15,8 @@ export default function LoveboxLayout() {
         contentStyle: { backgroundColor: theme.colors.background },
       }}
     >
-      <Stack.Screen name="create" options={{ title: "Nueva cápsula", headerBackVisible: false }} />
-      <Stack.Screen name="[id]" options={{ title: "Cápsula", headerBackVisible: false }} />
+      <Stack.Screen name="create" options={{ title: "Nuevo plan" }} />
+      <Stack.Screen name="[id]" options={{ title: "Plan" }} />
     </Stack>
   );
 }

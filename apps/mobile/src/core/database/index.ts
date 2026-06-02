@@ -19,7 +19,23 @@ ALTER TABLE capsules ADD COLUMN updated_at TEXT;
 UPDATE capsules SET updated_at = created_at WHERE updated_at IS NULL;
 `;
 
-const MIGRATIONS = [MIGRATION_001, MIGRATION_002];
+const MIGRATION_003 = `
+CREATE TABLE IF NOT EXISTS bucket_items (
+  id TEXT PRIMARY KEY NOT NULL,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  category TEXT NOT NULL,
+  status TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  completed_at TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_bucket_items_status_created
+  ON bucket_items (status, created_at);
+CREATE INDEX IF NOT EXISTS idx_bucket_items_completed_at
+  ON bucket_items (completed_at);
+`;
+
+const MIGRATIONS = [MIGRATION_001, MIGRATION_002, MIGRATION_003];
 
 let bootstrapStatus: LocalDatabaseStatus = "idle";
 let bootstrapError: string | null = null;

@@ -20,22 +20,22 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Inicio",
-          tabBarIcon: ({ color }) => <Ionicons name="home" size={24} color={color} />,
+          title: "Cápsulas",
+          tabBarIcon: ({ color }) => <Ionicons name="cube" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="playground"
         options={{
-          title: "Playground",
-          tabBarIcon: ({ color }) => <Ionicons name="hammer" size={24} color={color} />,
+          title: "Planes",
+          tabBarIcon: ({ color }) => <Ionicons name="flag" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: "Ajustes",
-          tabBarIcon: ({ color }) => <Ionicons name="settings" size={24} color={color} />,
+          title: "Emociones",
+          tabBarIcon: ({ color }) => <Ionicons name="heart" size={24} color={color} />,
         }}
       />
     </Tabs>
